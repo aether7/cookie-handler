@@ -1,0 +1,23 @@
+{
+  "name": "cookie-handler",
+  "version": "1.0.0",
+  "description": "cookie handler for browser",
+  "main": "cookie.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aether7/cookie-handler.git"
+  },
+  "keywords": [
+    "cookie",
+    "browser"
+  ],
+  "author": "aether7",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aether7/cookie-handler/issues"
+  },
+  "homepage": "https://github.com/aether7/cookie-handler#readme"
+}
