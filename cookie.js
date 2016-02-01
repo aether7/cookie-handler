@@ -13,50 +13,17 @@
     document.cookie = result;
   }
 
-  function mapCookies(){
-    return document.cookie.split('; ')
-      .filter(function(value){ return value.trim(); })
-      .reduce(function(acc, value){
-        var values = value.split('=');
-        acc[ values[ 0 ].trim() ] = values[ 1 ].trim();
-        return acc;
-      }, {});
-  }
-
-  function isEmptyObject(obj){
-    for (var attr in obj) {
-      return false;
-    }
-
-    return true;
-  }
-
-  var cookies = {};
-
   var cookie = {
     get: function(key){
-      if(isEmptyObject(cookies)){
-          cookies = mapCookies();
-      }
-
-      return key in cookies ? cookies[key] : null;
+      var results = new RegExp(key + '=(.*?)(;|$)','g').exec(document.cookie);
+      return results && results[1] ? results[1] : null;
     },
     set: function(key, value, days){
       days = days || 365;
       createCookie(key, value, addDays(days));
-
-      if(isEmptyObject(cookies)){
-        cookies = mapCookies();
-      }
-
-      cookies[ key ] = value;
     },
     remove: function(key){
       createCookie(key, null, addDays(-7));
-
-      if(!isEmptyObject(cookies)){
-        delete cookies[ key ];
-      }
     }
   };
 
