@@ -1,4 +1,10 @@
-;(function(){
+(function(context, factory){
+  if(typeof exports == 'undefined'){
+    module.exports = factory();
+  }else{
+    context.cookies = factory();
+  }
+})(this, function(){
   'use strict';
 
   function addDays(days){
@@ -27,9 +33,5 @@
     }
   };
 
-  if (typeof exports == 'undefined') {
-    window.cookie = cookie;
-  } else {
-    module.exports = cookie;
-  }
-})();
+  return cookie;
+});
