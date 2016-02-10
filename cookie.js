@@ -20,8 +20,14 @@
   }
 
   var cookie = {
-    get: function(key){
+    get: function(key, markAsDeletable){
+      markAsDeletable = markAsDeletable || false;
       var results = new RegExp(key + '=(.*?)(;|$)','g').exec(document.cookie);
+
+      if(markAsDeletable){
+        this.remove(key);
+      }
+
       return results && results[1] ? results[1] : null;
     },
     set: function(key, value, days){
