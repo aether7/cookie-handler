@@ -4,7 +4,8 @@
   "description": "cookie handler for browser",
   "main": "cookie.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "browserify test | browser-run | faucet",
+    "build": "uglifyjs src/cookie.js --output src/cookie.min.js"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,12 @@
   "bugs": {
     "url": "https://github.com/aether7/cookie-handler/issues"
   },
-  "homepage": "https://github.com/aether7/cookie-handler#readme"
+  "homepage": "https://github.com/aether7/cookie-handler#readme",
+  "devDependencies": {
+    "browser-run": "^3.0.8",
+    "browserify": "^13.0.0",
+    "faucet": "0.0.1",
+    "tape": "^4.4.0",
+    "uglifyjs": "^2.4.10"
+  }
 }

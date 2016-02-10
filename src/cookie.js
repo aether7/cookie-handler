@@ -1,5 +1,5 @@
 (function(context, factory){
-  if(typeof exports == 'undefined'){
+  if(typeof exports != 'undefined'){
     module.exports = factory();
   }else{
     context.cookies = factory();
