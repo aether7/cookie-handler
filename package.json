@@ -26,6 +26,6 @@
     "browserify": "^13.0.0",
     "faucet": "0.0.1",
     "tape": "^4.4.0",
-    "uglifyjs": "^2.4.10"
+    "uglify-js": "^2.6.1"
   }
 }
