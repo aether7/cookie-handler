@@ -16,6 +16,7 @@ If you need to retrieve a cookie value from cookies, just give it the key:
 
 ````javascript
 //document.cookie -> "foo=idunno; bar=firstValue"
+
 var myValue = cookies.get('foo');
 console.log('my value', myValue);//idunno
 
@@ -27,11 +28,14 @@ Also, you can just mark as deletable value(after it is recovered):
 
 ````javascript
 //document.cookie -> "foo=idunno; bar=firstValue"
+
 var myValue = cookies.get('foo', true);
 console.log(myValue);//idunno
 
 var otherValue = cookies.get('foo');
 console.log(otherValue);//null
+
+//document.cookie -> "bar=firstValue"
 ````
 
 
@@ -39,10 +43,11 @@ console.log(otherValue);//null
 
 cookies.set(key, value [, daysToExpire=365 ]);
 
-to set a value inside cookie, it is as easy as send it as follows
+to set a new cookie value, just give it the key and its value. Optionally, you can send how many days your cookie will survive.
 
 ````javascript
 cookies.set('coffeeType', 'mocha');
+
 //cookie="foo=idunno; bar=firstValue; coffeeType=mocha"
 ````
 
@@ -51,8 +56,12 @@ cookies.set('coffeeType', 'mocha');
 
 cookies.remove(key);
 
+To remove a cookie, just pass the key.
+
 ````javascript
 //cookie="foo=idunno; bar=firstValue"
+
 cookies.remove('foo');
+
 //cookie="bar=firstValue"
 ````
