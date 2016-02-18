@@ -15,7 +15,7 @@
   }
 
   function createCookie(key, value, expires){
-    var result = key + '=' + value + ';path=/;expires=' + expires.toUTCString();
+    var result = key + '=' + JSON.stringify(value) + ';path=/;expires=' + expires.toUTCString();
     document.cookie = result;
   }
 
@@ -28,7 +28,7 @@
         this.remove(key);
       }
 
-      return results && results[1] ? results[1] : null;
+      return results && results[1] ? JSON.parse(results[1]) : null;
     },
     set: function(key, value, days){
       days = days || 365;
