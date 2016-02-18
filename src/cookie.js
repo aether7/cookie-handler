@@ -19,16 +19,21 @@
     document.cookie = result;
   }
 
+  function getCookie(key){
+    var results = new RegExp(key + '=(.*?)(;|$)','g').exec(document.cookie);
+    return results && results[1] ? JSON.parse(results[1]) : null;
+  }
+
   var cookie = {
     get: function(key, markAsDeletable){
       markAsDeletable = markAsDeletable || false;
-      var results = new RegExp(key + '=(.*?)(;|$)','g').exec(document.cookie);
+      var value = getCookie(key);
 
       if(markAsDeletable){
         this.remove(key);
       }
 
-      return results && results[1] ? JSON.parse(results[1]) : null;
+      return value;
     },
     set: function(key, value, days){
       days = days || 365;
