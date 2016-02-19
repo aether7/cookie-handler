@@ -5,8 +5,15 @@ function setup(key, val){
   cookies.set(key, val);
 }
 
-function teardown(key){
-  cookies.remove(key);
+function teardown(){
+  var cookieNames = [
+    'greeting', 'number', 'string',
+    'boolean', 'array', 'object'
+  ];
+
+  cookieNames.forEach(function(cookieName){
+    cookies.remove(cookieName);
+  });
 }
 
 function message(expected, actual){
@@ -22,7 +29,7 @@ test('it should create a cookie with key name greeting', function(assert){
   assert.notEqual(actual, expected, 'greeting actual code marked position : ' + actual);
   assert.end();
 
-  teardown('greeting');
+  teardown();
 });
 
 test('it should get a greeting value', function(assert){
@@ -34,7 +41,7 @@ test('it should get a greeting value', function(assert){
   assert.equal(actual, expected, message(expected, actual));
   assert.end();
 
-  teardown('greeting');
+  teardown();
 });
 
 test('it should get a greeting value, then get null', function(assert){
@@ -51,7 +58,7 @@ test('it should get a greeting value, then get null', function(assert){
   assert.equal(actual, expected, message(expected, actual));
   assert.end();
 
-  teardown('greeting');
+  teardown();
 });
 
 test('it should get null when a inexistent key is given', function(assert){
@@ -73,7 +80,7 @@ test('it should remove a value when key is given', function(assert){
   assert.equal(actual, expected, message(expected, actual));
   assert.end();
 
-  teardown('greeting');
+  teardown();
 });
 
 test('it should add a number and return a number', function(assert){
@@ -85,7 +92,7 @@ test('it should add a number and return a number', function(assert){
   assert.equal(actual, expected, message(expected, actual));
   assert.end();
 
-  teardown('number');
+  teardown();
 });
 
 test('it should add a string and return a string', function(assert){
@@ -97,7 +104,7 @@ test('it should add a string and return a string', function(assert){
   assert.equal(actual, expected, message(expected, actual));
   assert.end();
 
-  teardown('string');
+  teardown();
 });
 
 test('it should add a boolean and return a boolean', function(assert){
@@ -109,7 +116,7 @@ test('it should add a boolean and return a boolean', function(assert){
   assert.equal(actual, expected, message(expected, actual));
   assert.end();
 
-  teardown('boolean');
+  teardown();
 });
 
 test('it should add an array and return an array', function(assert){
@@ -121,7 +128,7 @@ test('it should add an array and return an array', function(assert){
   assert.deepEqual(actual, expected, message(expected, actual));
   assert.end();
 
-  teardown('array');
+  teardown();
 });
 
 test('it should add an object and return an object', function(assert){
@@ -141,5 +148,5 @@ test('it should add an object and return an object', function(assert){
   assert.deepEqual(actual, expected, message(expected, actual));
   assert.end();
 
-  teardown('object');
+  teardown();
 });
