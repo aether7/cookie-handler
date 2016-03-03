@@ -25,11 +25,11 @@
   }
 
   var cookie = {
-    get: function(key, markAsDeletable){
-      markAsDeletable = markAsDeletable || false;
+    get: function(key, markAsErasable){
+      markAsErasable = markAsErasable || false;
       var value = getCookie(key);
 
-      if(markAsDeletable){
+      if(markAsErasable){
         this.remove(key);
       }
 
