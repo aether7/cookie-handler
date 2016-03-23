@@ -5,7 +5,8 @@
   "main": "src/cookie.js",
   "scripts": {
     "test": "browserify test | browser-run | faucet",
-    "build": "uglifyjs src/cookie.js --output src/cookie.min.js --mangle --lint"
+    "build": "uglifyjs src/cookie.js --output src/cookie.min.js --mangle --lint",
+    "publish": "npm run test && npm run build"
   },
   "repository": {
     "type": "git",

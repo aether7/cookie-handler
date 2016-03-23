@@ -150,3 +150,6 @@ test('it should add an object and return an object', function(assert){
 
   teardown();
 });
+
+//just to make sure that browser-run closes correctly
+window.close();
