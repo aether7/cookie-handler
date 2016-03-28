@@ -10,7 +10,7 @@ Methods availables
 
 ### get
 
-cookies.get(key [, markAsDeletable=false ]);
+cookies.get(key [, markAsErasable=false ]);
 
 If you need to retrieve a cookie value from cookies, just give it the key:
 
@@ -24,7 +24,7 @@ var otherValue = cookies.get('inexistent');
 console.log(otherValue);//null
 ````
 
-Also, you can just mark as deletable value(after it is recovered):
+Also, you can just mark as erasable value(after it is recovered):
 
 ````javascript
 //document.cookie -> "foo=idunno; bar=firstValue"
