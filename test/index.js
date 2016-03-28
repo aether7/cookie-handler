@@ -20,6 +20,38 @@ function message(expected, actual){
   return 'it should return ' + expected + ' but it returns ' + actual;
 }
 
+test('cookies should be an object', function(assert){
+  var actual = Object.prototype.toString.call(cookies).toUpperCase();
+  var expected = "[object object]".toUpperCase();
+
+  assert.equal(actual, expected, message(expected, actual));
+  assert.end();
+});
+
+test('cookies should have a set method', function(assert){
+  var actual = typeof cookies.set;
+  var expected = 'function';
+
+  assert.equal(actual, expected, message(expected, actual));
+  assert.end();
+});
+
+test('cookies should have a get method', function(assert){
+  var actual = typeof cookies.get;
+  var expected = 'function';
+
+  assert.equal(actual, expected, message(expected, actual));
+  assert.end();
+});
+
+test('cookies shoud have a remove method', function(assert){
+  var actual = typeof cookies.remove;
+  var expected = 'function';
+
+  assert.equal(actual, expected, message(expected, actual));
+  assert.end();
+});
+
 test('it should create a cookie with key name greeting', function(assert){
   setup('greeting', 'hello');
 
