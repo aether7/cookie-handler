@@ -1,8 +1,8 @@
 {
   "name": "cookie-handler",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "cookie handler for browser",
-  "main": "src/cookie.js",
+  "main": "src/cookie.min.js",
   "scripts": {
     "test": "browserify test | browser-run | faucet",
     "build": "uglifyjs src/cookie.js --output src/cookie.min.js --mangle --lint",
