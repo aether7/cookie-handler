@@ -2,11 +2,10 @@
   "name": "cookie-handler",
   "version": "1.1.0",
   "description": "cookie handler for browser",
-  "main": "src/cookie.min.js",
+  "main": "src/cookie.js",
   "scripts": {
     "test": "jest . --coverage",
-    "build": "uglifyjs src/cookie.js --output src/cookie.min.js --mangle --lint",
-    "publish": "npm run test && npm run build"
+    "publish": "npm run test"
   },
   "repository": {
     "type": "git",

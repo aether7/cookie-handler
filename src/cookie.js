@@ -1,33 +1,26 @@
-(function(context, factory){
-  if(typeof exports != 'undefined'){
-    module.exports = factory();
-  }else{
-    context.cookies = factory();
-  }
-})(this, function(){
-  'use strict';
+function addDays(days) {
+  var date = new Date();
+  var additionalDays = 1000 * 60 * 60 * 24 * days;
+  date.setTime(date.getTime() + additionalDays);
+  return date;
+}
 
-  function addDays(days){
-    var date = new Date();
-    var additionalDays = 1000 * 60 * 60 * 24 * days;
-    date.setTime(date.getTime() + additionalDays);
-    return date;
-  }
+function createCookie(key, value, expires) {
+  var result = key + '=' + JSON.stringify(value) + ';path=/;expires=' + expires.toUTCString();
+  document.cookie = result;
+}
 
-  function createCookie(key, value, expires){
-    var result = key + '=' + JSON.stringify(value) + ';path=/;expires=' + expires.toUTCString();
-    document.cookie = result;
+function getCookie(key, isString) {
+  var results = new RegExp(key + '=(.*?)(;|$)','g').exec(document.cookie);
+
+  if (isString) {
+      return results && results[1] ? results[1] : null;
   }
 
-  function getCookie(key, isString){
-    var results = new RegExp(key + '=(.*?)(;|$)','g').exec(document.cookie);
-    if (isString){
-        return results && results[1] ? results[1] : null;
-    }
+  return results && results[1] ? JSON.parse(results[1]) : null;
+}
 
-    return results && results[1] ? JSON.parse(results[1]) : null;
-  }
-
+function cookieFactory() {
   var cookie = {
     get: function(key, isString, markAsErasable){
       isString = isString || false;
@@ -50,4 +43,6 @@
   };
 
   return cookie;
-});
+}
+
+module.exports = cookieFactory();
