@@ -10,7 +10,7 @@ Methods availables
 
 ### get
 
-cookies.get(key [, markAsErasable=false ]);
+cookies.get(key [, isString=false, markAsErasable=false ]);
 
 If you need to retrieve a cookie value from cookies, just give it the key:
 
@@ -29,14 +29,16 @@ Also, you can just mark as erasable value(after it is recovered):
 ````javascript
 //document.cookie -> "foo=idunno; bar=firstValue"
 
-var myValue = cookies.get('foo', true);
+var myValue = cookies.get('foo', false, true);
 console.log(myValue);//idunno
 
-var otherValue = cookies.get('foo');
+var otherValue = cookies.get('foo', false, true);
 console.log(otherValue);//null
 
 //document.cookie -> "bar=firstValue"
 ````
+
+
 
 
 ### set

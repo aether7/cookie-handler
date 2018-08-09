@@ -2,7 +2,7 @@ const cookies = require('../src/cookie');
 
 describe('cookie', () => {
   afterEach(() => {
-    document.cookie = "greetingString=bonjour";
+    document.cookie = "DYNAMIC_DATA_COOKIE=Norman*10";
     document.cookie = 'greetingJson={"greeting":"hello"}';
   });
 
@@ -15,8 +15,8 @@ describe('cookie', () => {
   });
 
   test('it should get a greeting value set like string', () => {
-    const actual = cookies.get('greetingString', true);
-    const expected = 'bonjour';
+    const actual = cookies.get('DYNAMIC_DATA_COOKIE', true);
+    const expected = 'Norman*10';
     expect(actual).toBe(expected);
   });
 
