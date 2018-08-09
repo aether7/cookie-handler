@@ -19,15 +19,20 @@
     document.cookie = result;
   }
 
-  function getCookie(key){
+  function getCookie(key, isString){
     var results = new RegExp(key + '=(.*?)(;|$)','g').exec(document.cookie);
+    if (isString){
+        return results && results[1] ? results[1] : null;
+    }
+
     return results && results[1] ? JSON.parse(results[1]) : null;
   }
 
   var cookie = {
-    get: function(key, markAsErasable){
+    get: function(key, isString, markAsErasable){
+      isString = isString || false;
       markAsErasable = markAsErasable || false;
-      var value = getCookie(key);
+      var value = getCookie(key, isString);
 
       if(markAsErasable){
         this.remove(key);
