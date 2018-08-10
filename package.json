@@ -4,8 +4,9 @@
   "description": "cookie handler for browser",
   "main": "src/cookie.js",
   "scripts": {
+    "lint": "eslint src/*.js __tests__/*.js",
     "test": "jest . --coverage",
-    "publish": "npm run test"
+    "publish": "npm run lint && npm run test"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
   },
   "homepage": "https://github.com/aether7/cookie-handler#readme",
   "devDependencies": {
+    "eslint": "^5.3.0",
     "jest": "^23.4.2",
     "uglify-js": "^2.6.1"
   }

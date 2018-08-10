@@ -2,7 +2,7 @@ const cookies = require('../src/cookie');
 
 describe('cookie', () => {
   afterEach(() => {
-    document.cookie = "DYNAMIC_DATA_COOKIE=Norman*10";
+    document.cookie = 'DYNAMIC_DATA_COOKIE=Norman*10';
     document.cookie = 'greetingJson={"greeting":"hello"}';
   });
 
@@ -22,7 +22,7 @@ describe('cookie', () => {
 
   test('it should get a greeting value set like a Json', () => {
     const actual = cookies.get('greetingJson');
-    const expected = {greeting: "hello"};
+    const expected = {greeting: 'hello'};
     expect(actual.greeting).toBe(expected.greeting);
   });
 
@@ -30,7 +30,7 @@ describe('cookie', () => {
     expect(typeof cookies.set).toBe('function');
   });
 
-  test('it should set new cookie', () => {
+  test('it should set new cookie', () => {
     cookies.set('cookie', 'cool', 1);
     const actual = cookies.get('cookie');
     const expected = 'cool';
@@ -51,4 +51,15 @@ describe('cookie', () => {
     expect(actual).toBe(expected);
   });
 
+  test('getting an unexisting cookie key will return null', () => {
+    const actual = cookies.get('unexisting key', true);
+    expect(actual).toBe(null);
+  });
+
+  test('setting a cookie with default values', () => {
+    cookies.set('foo-key', 'barvalue');
+
+    const actual = cookies.get('foo-key');
+    expect(actual).toBe('barvalue');
+  });
 });
