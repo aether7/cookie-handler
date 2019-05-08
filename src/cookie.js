@@ -13,18 +13,16 @@ function createCookie(key, value, expires) {
 function getCookie(key, isString) {
   var results = new RegExp(key + '=(.*?)(;|$)','g').exec(document.cookie);
 
-  if (isString) {
-    return results && results[1] ? results[1] : null;
+  if (!results) {
+    return null;
   }
 
-  return results && results[1] ? JSON.parse(results[1]) : null;
+  return isString ? results[1] : JSON.parse(results[1]);
 }
 
 function cookieFactory() {
   var cookie = {
-    get: function(key, isString, markAsErasable){
-      isString = isString || false;
-      markAsErasable = markAsErasable || false;
+    get: function getI(key, isString, markAsErasable) {
       var value = getCookie(key, isString);
 
       if(markAsErasable){
@@ -33,11 +31,11 @@ function cookieFactory() {
 
       return value;
     },
-    set: function(key, value, days){
+    set: function setI(key, value, days) {
       days = days || 365;
       createCookie(key, value, addDays(days));
     },
-    remove: function(key){
+    remove: function removeI(key) {
       createCookie(key, null, addDays(-7));
     }
   };
