@@ -24,7 +24,7 @@
   "homepage": "https://github.com/aether7/cookie-handler#readme",
   "devDependencies": {
     "eslint": "^5.16.0",
-    "jest": "^23.4.2",
+    "jest": "^24.8.0",
     "uglify-js": "^2.6.1"
   }
 }
