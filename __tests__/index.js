@@ -38,6 +38,34 @@ describe('cookie', () => {
 
   });
 
+  test('it should set new cookie 1 second', () => {
+    cookies.set('1seg', 'cool', 1, 's');
+    const actual = cookies.get('1seg');
+    const expected = 'cool';
+    expect(actual).toBe(expected);
+  });
+
+  test('it should set new cookie 1 minute', () => {
+    cookies.set('1min', 'cool', 1, 'm');
+    const actual = cookies.get('1min');
+    const expected = 'cool';
+    expect(actual).toBe(expected);
+  });
+
+  test('it should set new cookie 1 hour', () => {
+    cookies.set('1hour', 'cool', 1, 'h');
+    const actual = cookies.get('1hour');
+    const expected = 'cool';
+    expect(actual).toBe(expected);
+  });
+
+  test('it should set new cookie 1 day', () => {
+    cookies.set('1day', 'cool', 1, 'd');
+    const actual = cookies.get('1day');
+    const expected = 'cool';
+    expect(actual).toBe(expected);
+  });
+
   test('it should ask for a cookie and errase that', () => {
     cookies.get('cookie', false, true);
     const actual = cookies.get('cookie', false, true);

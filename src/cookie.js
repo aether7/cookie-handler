@@ -1,7 +1,28 @@
-function addDays(days) {
+function addSeconds(time){
   var date = new Date();
-  var additionalDays = 1000 * 60 * 60 * 24 * days;
-  date.setTime(date.getTime() + additionalDays);
+  var additionalTime = 1000 * time;
+  date.setTime(date.getTime() + additionalTime);
+  return date;
+}
+
+function addMinutes(time){
+  var date = new Date();
+  var additionalTime = 1000 * 60 * time;
+  date.setTime(date.getTime() + additionalTime);
+  return date;
+}
+
+function addHours(time) {
+  var date = new Date();
+  var additionalTime = 1000 * 60 * 60 * time;
+  date.setTime(date.getTime() + additionalTime);
+  return date;
+}
+
+function addDays(time) {
+  var date = new Date();
+  var additionalTime = 1000 * 60 * 60 * 24 * time;
+  date.setTime(date.getTime() + additionalTime);
   return date;
 }
 
@@ -31,9 +52,27 @@ function cookieFactory() {
 
       return value;
     },
-    set: function setI(key, value, days) {
-      days = days || 365;
-      createCookie(key, value, addDays(days));
+    set: function setI(key, value, time, format) {
+      time = time || 365;
+      format = format || 'd';
+      var fn;
+      
+      switch(format){
+        case 's':
+          fn = addSeconds;
+          break;
+        case 'm':
+          fn = addMinutes;
+          break;
+        case 'h':
+          fn = addHours;
+          break;
+        default:
+          fn = addDays;
+          break;
+      }
+
+      createCookie(key, value, fn(time));
     },
     remove: function removeI(key) {
       createCookie(key, null, addDays(-7));
