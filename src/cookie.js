@@ -53,23 +53,23 @@ function cookieFactory() {
       return value;
     },
     set: function setI(key, value, time, format) {
+      var fn;
       time = time || 365;
       format = format || 'd';
-      var fn;
-      
-      switch(format){
-        case 's':
-          fn = addSeconds;
-          break;
-        case 'm':
-          fn = addMinutes;
-          break;
-        case 'h':
-          fn = addHours;
-          break;
-        default:
-          fn = addDays;
-          break;
+
+      switch (format) {
+      case 's':
+        fn = addSeconds;
+        break;
+      case 'm':
+        fn = addMinutes;
+        break;
+      case 'h':
+        fn = addHours;
+        break;
+      default:
+        fn = addDays;
+        break;
       }
 
       createCookie(key, value, fn(time));
