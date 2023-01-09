@@ -1,28 +1,6 @@
-function addSeconds(time){
-  var date = new Date();
-  var additionalTime = 1000 * time;
-  date.setTime(date.getTime() + additionalTime);
-  return date;
-}
-
-function addMinutes(time){
-  var date = new Date();
-  var additionalTime = 1000 * 60 * time;
-  date.setTime(date.getTime() + additionalTime);
-  return date;
-}
-
-function addHours(time) {
-  var date = new Date();
-  var additionalTime = 1000 * 60 * 60 * time;
-  date.setTime(date.getTime() + additionalTime);
-  return date;
-}
-
-function addDays(time) {
-  var date = new Date();
-  var additionalTime = 1000 * 60 * 60 * 24 * time;
-  date.setTime(date.getTime() + additionalTime);
+function addTime(time) {
+  const date = new Date();
+  date.setTime(date.getTime() + time);
   return date;
 }
 
@@ -41,37 +19,33 @@ function getCookie(key, isString) {
   return isString ? results[1] : JSON.parse(results[1]);
 }
 
-function cookieFactory() {
-  var cookie = {
-    get: function getI(key, isString, markAsErasable) {
-      var value = getCookie(key, isString);
+const addSeconds = time => addTime(time * 1000);
+const addMinutes = time => addTime(addSeconds(time * 60));
+const addHours = time => addTime(addSeconds(time * 3600));
+const addDays = time => addTime(addSeconds(time * 86400));
 
-      if(markAsErasable){
+const formats = {
+  's': addSeconds,
+  'm': addMinutes,
+  'h': addHours,
+  'd': addDays,
+};
+
+function cookieFactory() {
+  const cookie = {
+    get(key, isString, markAsErasable) {
+      const value = getCookie(key, isString);
+
+      if (markAsErasable) {
         this.remove(key);
       }
 
       return value;
     },
-    set: function setI(key, value, time, format) {
-      var fn;
+    set(key, value, time, format) {
       time = time || 365;
       format = format || 'd';
-      
-      switch(format){
-      case 's':
-        fn = addSeconds;
-        break;
-      case 'm':
-        fn = addMinutes;
-        break;
-      case 'h':
-        fn = addHours;
-        break;
-      default:
-        fn = addDays;
-        break;
-      }
-
+      const fn = formats[format];
       createCookie(key, value, fn(time));
     },
     remove: function removeI(key) {
