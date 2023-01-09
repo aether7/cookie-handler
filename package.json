@@ -1,6 +1,6 @@
 {
   "name": "cookie-handler",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "cookie handler for browser",
   "main": "src/cookie.js",
   "scripts": {
